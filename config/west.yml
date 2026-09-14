@@ -26,9 +26,6 @@ manifest:
     - name: zmk-input-zoom
       remote: beekeeb
       revision: main
-    - name: zmk-auto-layer
-      remote: urob
-      revision: main
     - name: zmk-helpers
       remote: urob
       revision: main
