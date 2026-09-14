@@ -42,7 +42,8 @@ unset ZEPHYR_BASE && west build -s zmk/app -b seeeduino_xiao_ble \
   -- -DSHIELD="toucan_left rgbled_adapter nice_view_gem" \
      -DZMK_CONFIG="$(pwd)/config" \
      -DZMK_EXTRA_MODULES="$(pwd)" \
-     -DCONFIG_ZMK_STUDIO=y
+     -DCONFIG_ZMK_STUDIO=y \
+     -DCONFIG_UART_CONSOLE=n
 ```
 
 ### Right half (RGB LED)
@@ -90,6 +91,13 @@ west build -d build/left
 | `-DZMK_CONFIG="$(pwd)/config"` | Absolute path to the keymap, Kconfig, and `.conf` files |
 | `-DZMK_EXTRA_MODULES="$(pwd)"` | Absolute path so Zephyr sees this repo's shield definitions under `boards/shields/` |
 | `-DCONFIG_ZMK_STUDIO=y` | Enables ZMK Studio keymap editing |
+| `-DCONFIG_UART_CONSOLE=n` | Prevents the `studio-rpc-usb-uart` snippet from forcing `CONFIG_UART_CONSOLE=y` on the XIAO BLE, which has no hardware UART console device |
+
+## Why `-DCONFIG_UART_CONSOLE=n` is needed
+
+The `studio-rpc-usb-uart` snippet enables `CONFIG_UART_CONSOLE=y` so Studio RPC can run over the CDC ACM USB-UART interface. On the XIAO BLE board, there is no hardware UART device mapped to `zephyr,console`. Zephyr still tries to compile the UART console driver and aborts because `DT_CHOSEN(zephyr_console)` resolves to an invalid device node.
+
+Passing `-DCONFIG_UART_CONSOLE=n` after `--` writes it into `extra_kconfig_options.conf` (the **last** Kconfig file merged), overriding the snippet's forced `y`. Studio's RPC transport works independently of Zephyr's console subsystem, so Studio functionality is unaffected.
 
 ## Output
 
@@ -121,3 +129,4 @@ west update        # pull fresh module sources if desired
 - **`west update` fails on module fetch**: These repos default to `master`; our `west.yml` pins them to `main`. If you see `couldn't find remote ref master`, ensure you're on the latest commit that includes the `revision: main` fix.
 - **`zmk.keymap` not found**: Ensure `-DZMK_CONFIG` is an absolute path. Use `"$(pwd)/config"`.
 - **Shield not found during build**: Ensure `-DZMK_EXTRA_MODULES="$(pwd)"` is set so Zephyr sees `boards/shields/toucan/`, `nice_view_gem/`, etc.
+- **`uart_console.c` compile error (`__device_dts_ord_*` undeclared)**: You are building the left half with `-S studio-rpc-usb-uart` but missing the `-DCONFIG_UART_CONSOLE=n` override. See the build command above.
