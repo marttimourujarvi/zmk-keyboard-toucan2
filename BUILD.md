@@ -91,13 +91,13 @@ west build -d build/left
 | `-DZMK_CONFIG="$(pwd)/config"` | Absolute path to the keymap, Kconfig, and `.conf` files |
 | `-DZMK_EXTRA_MODULES="$(pwd)"` | Absolute path so Zephyr sees this repo's shield definitions under `boards/shields/` |
 | `-DCONFIG_ZMK_STUDIO=y` | Enables ZMK Studio keymap editing |
-| `-DCONFIG_UART_CONSOLE=n` | Prevents the `studio-rpc-usb-uart` snippet from forcing `CONFIG_UART_CONSOLE=y` on the XIAO BLE, which has no hardware UART console device |
+| `-DCONFIG_UART_CONSOLE=n` | Safety net to keep `CONFIG_UART_CONSOLE` disabled if anything (e.g. `CONFIG_ZMK_USB_LOGGING`) tries to force it on |
 
 ## Why `-DCONFIG_UART_CONSOLE=n` is needed
 
-The `studio-rpc-usb-uart` snippet enables `CONFIG_UART_CONSOLE=y` so Studio RPC can run over the CDC ACM USB-UART interface. On the XIAO BLE board, there is no hardware UART device mapped to `zephyr,console`. Zephyr still tries to compile the UART console driver and aborts because `DT_CHOSEN(zephyr_console)` resolves to an invalid device node.
-
-Passing `-DCONFIG_UART_CONSOLE=n` after `--` writes it into `extra_kconfig_options.conf` (the **last** Kconfig file merged), overriding the snippet's forced `y`. Studio's RPC transport works independently of Zephyr's console subsystem, so Studio functionality is unaffected.
+The `seeeduino_xiao_ble` board disables `CONFIG_SERIAL` and `CONFIG_UART_CONSOLE` by default because it relies on USB HID/CDC rather than a hardware UART.
+`CONFIG_ZMK_USB_LOGGING=y` **Kconfig-selects** `UART_CONSOLE=y`, which forces the UART-console driver to compile against `zephyr_console` on a board that has no enabled physical UART. This causes a compile-time device-tree error (`__device_dts_ord_*` undeclared).
+Removing `CONFIG_ZMK_USB_LOGGING` from the left-half `.conf` fixes the root cause. The `-DCONFIG_UART_CONSOLE=n` in `cmake-args` is a harmless guard against any other module doing the same thing.
 
 ## Output
 
