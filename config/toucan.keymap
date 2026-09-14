@@ -7,7 +7,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <behaviors/num_word.dtsi>
 #include "toucan_keys.h"
 #include "combos.dtsi"
 
