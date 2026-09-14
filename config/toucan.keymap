@@ -56,6 +56,10 @@ ZMK_TRI_STATE(swapper, bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
 ZMK_TRI_STATE(lang_swap, bindings = <&kt LCTRL>, <&kp SPACE>, <&kt LCTRL>;
               ignored-key-positions = <RB4>;)
 
+// Linux window switcher (Alt+Tab)
+ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+              ignored-key-positions = <LT2 RM1 RM2 RM3 RM4>;)
+
 / {
     behaviors {
         m_u: minus_underscore {
@@ -86,6 +90,20 @@ ZMK_TRI_STATE(lang_swap, bindings = <&kt LCTRL>, <&kp SPACE>, <&kt LCTRL>;
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&sel_word_f>, <&sel_word_b>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        jump_word_lin: jump_word_lin {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&jump_word_f_lin>, <&jump_word_b_lin>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        sel_word_lin: sel_word_lin {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sel_word_f_lin>, <&sel_word_b_lin>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -229,6 +247,100 @@ ZMK_TRI_STATE(lang_swap, bindings = <&kt LCTRL>, <&kp SPACE>, <&kt LCTRL>;
                 ;
         };
 
+        // Linux-specific macros (Ctrl-based shortcuts, Compose umlauts)
+        zoom_in_lin: zoom_in_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp PLUS>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+        zoom_out_lin: zoom_out_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp MINUS>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+        jump_word_f_lin: jump_word_f_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL &kp RIGHT>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LCTRL &kp RIGHT>
+                ;
+        };
+
+        jump_word_b_lin: word_b_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL &kp LEFT>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LCTRL &kp LEFT>
+                ;
+        };
+
+        sel_word_f_lin: sel_word_f_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT &kp LCTRL &kp RIGHT>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LSHFT &kp LCTRL &kp RIGHT>
+                ;
+        };
+
+        sel_word_b_lin: sel_word_b_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT &kp LCTRL &kp LEFT>
+                , <&macro_wait_time 5>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LSHFT &kp LCTRL &kp LEFT>
+                ;
+        };
+
+        word_del_lin: word_del_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp BSPC>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+        umlaut_a_lin: umlaut_a_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RALT>
+                , <&macro_tap &kp DQT>
+                , <&macro_release &kp RALT>
+                , <&macro_tap &kp A>
+                ;
+        };
+
+        umlaut_o_lin: umlaut_o_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RALT>
+                , <&macro_tap &kp DQT>
+                , <&macro_release &kp RALT>
+                , <&macro_tap &kp O>
+                ;
+        };
+
     };
 
     conditional_layers {
@@ -236,6 +348,10 @@ ZMK_TRI_STATE(lang_swap, bindings = <&kt LCTRL>, <&kp SPACE>, <&kt LCTRL>;
         tri_layer {
             if-layers = <1 2>;
             then-layer = <3>;
+        };
+        tri_layer_lin {
+            if-layers = <7 2>;
+            then-layer = <8>;
         };
     };
 
@@ -330,13 +446,67 @@ ZMK_TRI_STATE(lang_swap, bindings = <&kt LCTRL>, <&kp SPACE>, <&kt LCTRL>;
         //│  none    │ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │  none    │
            &none &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  none    │BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│  none    │
-          &none &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader &none
+        //│  none    │BOOTLOADER│ LINUX-TOG│          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│  none    │
+          &none &bootloader  &tog 6     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │  none    │
             &none      &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans     &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &trans         &trans      &trans     &trans
+        //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+            >;
+        };
+
+        lin_overlay {
+            display-name = "Linux Overlay";
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│          │          │          │          │          │          │   │          │          │          │          │          │          │
+            &trans      &trans      &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans     &trans
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │          │   │          │          │          │          │          │          │
+            &trans      &trans      &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans     &trans
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │          │   │          │          │          │          │          │          │
+            &trans      &trans      &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
+                                            &kp A       &lt 7 SPACE &kp ENTER   MAGIC_SHIFT &lt 2 BSPC  &kp A
+        //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+            >;
+        };
+
+        nav_lin {
+            display-name = "Nav Linux";
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  none    │  ESC     │ TAB BACK │ TAB FWD  │ MUTE     │ ZOOM IN  │   │  ZOOM OUT│  HOME    │ PAGE DN  │ PAGE UP  │ END      │  none    │
+            &none      &kp ESC   &tab_back  &tab_forward &kp C_MUTE &zoom_in_lin    &zoom_out_lin   &kp HOME   &kp PG_DN  &kp PG_UP &kp END    &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  none    │ ALT-TAB  │  TAB     | COPY     │ PASTE    | VOL_UP   │   │ CAPSLOCK |  LEFT    │ DOWN     │ UP       │ RIGHT    │  none    │
+            &none      &swapper_lin &kp TAB   &kp LC(C) &kp LC(V) &kp C_VOL_UP      &kp CAPS  &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  none    │ HOME     │ END      │  CUT     │  UNDO    │ VOL_DOWN │   │ lang_swap│  DEL     | SEL WORD | JUMP WORD| WORD DEL │  none    │
+            &none      &kp HOME   &kp END   &kp LC(X)  &kp LC(Z) &kp C_VOL_DN   &lang_swap  &kp DEL  &sel_word_lin  &jump_word_lin  &word_del_lin  &none
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
+                                            &trans      &trans      &trans         &trans      &trans     &trans
+        //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+            >;
+        };
+
+        num_lin {
+            display-name = "Number Linux";
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  none    │  7       │  5       │  3       │  1       │  9       │   │  8       │  0       │  2       │  4       │  6       │  none    │
+            &none      &kp N7    &kp N5     &kp N3     &kp N1      &kp N9         &kp N8     &kp N0     &kp N2     &kp N4     &kp N6    &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  none    │  ä       │  ,       │  .       │  -       │  F11     │   │  F10     │  BSPC    │  .       │  ,       │  ö       │  none    │
+            &none      &umlaut_a_lin &kp COMMA   &kp DOT  &kp MINUS   &kp F11        &kp F10    &kp BSPC   &kp DOT   &kp COMMA    &umlaut_o_lin &none
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
+            &none      &kp F7     &kp F5     &kp F1     &kp F1     &kp F9         &kp F8     &kp F12     &kp F2     &kp F4     &kp F6    &none
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
+                                            &trans      &trans      &to 5           &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
