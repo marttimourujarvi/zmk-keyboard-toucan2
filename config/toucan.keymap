@@ -10,8 +10,8 @@
 #include "toucan_keys.h"
 #include "combos.dtsi"
 
-#define KEYS_L   LT4 LT3 LT2 LT1 LT0 LM4 LM3 LM2 LM1 LM0 LB4 LB3 LB2 LB1 LB0 LoutT LoutM LoutB
-#define KEYS_R   RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4 RoutT RoutM RoutB
+#define KEYS_L   LT4 LT3 LT2 LT1 LT0 LM4 LM3 LM2 LM1 LM0 LB4 LB3 LB2 LB1 LB0
+#define KEYS_R   RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #define THUMBS   LH1 LH0 LHx RH0 RH1 RHx
 
 #define QUICK_TAP_MS 175
@@ -361,13 +361,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │  Q       │  W       │  F       │  P       │  B       │   │  J       │  L       │  U       │  Y       │  - / _   │  none    │
-            &none      &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &m_u       &none
+            &kp Q   &kp W   &kp F   &kp P   &kp B   &kp J   &kp L   &kp U   &kp Y   &m_u
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │   O      │  none    │
-        &none &hml LSHFT A &hml LCTRL R &hmr LALT S &hml LGUI T  &kp G       &kp M   &hmr RGUI N &hmr RALT E &hmr RCTRL I &hmr RSHFT O &none
+        &hml LSHFT A   &hml LCTRL R   &hmr LALT S   &hml LGUI T   &kp G   &kp M   &hmr RGUI N   &hmr RALT E   &hmr RCTRL I   &hmr RSHFT O
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │ , <      │ . >      │ / ?      │  none    │
-            &none      &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH   &none
+            &kp Z   &kp X   &kp C   &kp D   &kp V   &kp K   &kp H   &kp COMMA   &kp DOT   &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &kp A      &kp ENTER  &lt 1 SPACE     MAGIC_SHIFT &lt 2 BSPC  &kp A
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -379,13 +379,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │  ESC     │ TAB BACK │ TAB FWD  │ MUTE     │ ZOOM IN  │   │  ZOOM OUT│  HOME    │ PAGE DN  │ PAGE UP  │ END      │  none    │
-            &none      &kp ESC   &tab_back  &tab_forward &kp C_MUTE &zoom_in      &zoom_out   &kp HOME   &kp PG_DN  &kp PG_UP &kp END    &none
+            &kp ESC   &tab_back   &tab_forward   &kp C_MUTE   &zoom_in   &zoom_out   &kp HOME   &kp PG_DN   &kp PG_UP   &kp END
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │ WIN-SWAP │  TAB     | COPY     │ PASTE    | VOL_UP   │   │ CAPSLOCK |  LEFT    │ DOWN     │ UP       │ RIGHT    │  none    │
-            &none      &swapper   &kp TAB   &kp LG(C) &kp LG(V) &kp C_VOL_UP      &kp CAPS  &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none
+            &swapper   &kp TAB   &kp LG(C)   &kp LG(V)   &kp C_VOL_UP   &kp CAPS   &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │ SPACE B  │ SPACE F  │  CUT     │  UNDO    │ VOL_DOWN │   │ lang_swap│  DEL     | SEL WORD | JUMP WORD| WORD DEL │  none    │
-            &none      &space_b   &space_f   &kp LG(X)  &kp LG(Z) &kp C_VOL_DN   &lang_swap  &kp DEL  &sel_word  &jump_word  &word_del  &none
+            &space_b   &space_f   &kp LG(X)   &kp LG(Z)   &kp C_VOL_DN   &lang_swap   &kp DEL   &sel_word   &jump_word   &word_del
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &trans         &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -397,13 +397,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │  !       │  [       │  {       │  (       │  ?       │   │  @       │  )       │  }       │  ]       │  '       │  none    │
-           &none &kp EXCL &kp LBKT   &kp LBRC   &kp LPAR   &kp QMARK         &kp AT_SIGN  &kp RPAR  &kp RBRC   &kp RBKT    &kp SQT &none
+           &kp EXCL   &kp LBKT   &kp LBRC   &kp LPAR   &kp QMARK   &kp AT_SIGN   &kp RPAR   &kp RBRC   &kp RBKT   &kp SQT
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  ^       │  =       │  _       │  $       │  *       │   │  %       │  :       │  ;       │  &       │  "       │  none    │
-           &none &kp CARET  &kp EQUAL  &kp UNDER  &kp DLLR   &kp ASTRK      &kp PRCNT   &kp COLON  &kp SEMI   &kp AMPS   &kp DQT &none
+           &kp CARET   &kp EQUAL   &kp UNDER   &kp DLLR   &kp ASTRK   &kp PRCNT   &kp COLON   &kp SEMI   &kp AMPS   &kp DQT
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  <       │  |       │  -       │  >       │  /       │   │  \       │  #       │  +       │  ~       │  `       │  none    │
-            &none &kp LT     &kp PIPE   &kp MINUS   &kp GT     &kp SLASH     &kp BSLH  &kp HASH  &kp PLUS   &kp TILDE   &kp GRAVE &none
+            &kp LT   &kp PIPE   &kp MINUS   &kp GT   &kp SLASH   &kp BSLH   &kp HASH   &kp PLUS   &kp TILDE   &kp GRAVE
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &trans         &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -415,13 +415,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │  7       │  5       │  3       │  1       │  9       │   │  8       │  0       │  2       │  4       │  6       │  none    │
-            &none      &kp N7    &kp N5     &kp N3     &kp N1      &kp N9         &kp N8     &kp N0     &kp N2     &kp N4     &kp N6    &none
+            &kp N7   &kp N5   &kp N3   &kp N1   &kp N9   &kp N8   &kp N0   &kp N2   &kp N4   &kp N6
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  ä       │  ,       │  .       │  -       │  F11     │   │  F10     │  BSPC    │  .       │  ,       │  ö       │  none    │
-            &none      &umlaut_a &kp COMMA   &kp DOT  &kp MINUS   &kp F11        &kp F10    &kp BSPC   &kp DOT   &kp COMMA    &umlaut_o &none
+            &umlaut_a   &kp COMMA   &kp DOT   &kp MINUS   &kp F11   &kp F10   &kp BSPC   &kp DOT   &kp COMMA   &umlaut_o
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
-            &none      &kp F7     &kp F5     &kp F1     &kp F1     &kp F9         &kp F8     &kp F12     &kp F2     &kp F4     &kp F6    &none
+            &kp F7   &kp F5   &kp F1   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &to 5           &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -431,9 +431,9 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         mouse {
             display-name = "MOU";
             bindings = <
-                &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
+                &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
+                &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
+                &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
                             &mkp MCLK &mkp LCLK &mkp RCLK           &mkp LCLK &mkp RCLK &mkp MCLK
             >;
         };
@@ -443,13 +443,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │  none    │
-           &none &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset &none
+           &sys_reset   &trans   &trans   &trans   &bt BT_SEL 0   &trans   &trans   &trans   &trans   &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │BOOTLOADER│ LINUX-TOG│          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│  none    │
-          &none &bootloader  &tog 6     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader &none
+          &bootloader   &tog 6   &trans   &trans   &bt BT_SEL 1   &trans   &trans   &trans   &trans   &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │  none    │
-            &none      &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans     &none
+            &trans   &trans   &trans   &bt BT_CLR   &bt BT_SEL 2   &trans   &trans   &trans   &trans   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &trans         &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -461,13 +461,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
-            &trans      &trans      &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans     &trans
+            &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
-            &trans      &trans      &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans     &trans
+            &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
-            &trans      &trans      &trans      &trans      &trans      &trans         &trans      &trans      &trans      &trans      &trans     &trans
+            &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &kp A       &lt 7 SPACE &kp ENTER   MAGIC_SHIFT &lt 2 BSPC  &kp A
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -479,13 +479,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │  ESC     │ TAB BACK │ TAB FWD  │ MUTE     │ ZOOM IN  │   │  ZOOM OUT│  HOME    │ PAGE DN  │ PAGE UP  │ END      │  none    │
-            &none      &kp ESC   &tab_back  &tab_forward &kp C_MUTE &zoom_in_lin    &zoom_out_lin   &kp HOME   &kp PG_DN  &kp PG_UP &kp END    &none
+            &kp ESC   &tab_back   &tab_forward   &kp C_MUTE   &zoom_in_lin   &zoom_out_lin   &kp HOME   &kp PG_DN   &kp PG_UP   &kp END
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │ ALT-TAB  │  TAB     | COPY     │ PASTE    | VOL_UP   │   │ CAPSLOCK |  LEFT    │ DOWN     │ UP       │ RIGHT    │  none    │
-            &none      &swapper_lin &kp TAB   &kp LC(C) &kp LC(V) &kp C_VOL_UP      &kp CAPS  &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none
+            &swapper_lin   &kp TAB   &kp LC(C)   &kp LC(V)   &kp C_VOL_UP   &kp CAPS   &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │ HOME     │ END      │  CUT     │  UNDO    │ VOL_DOWN │   │ lang_swap│  DEL     | SEL WORD | JUMP WORD| WORD DEL │  none    │
-            &none      &kp HOME   &kp END   &kp LC(X)  &kp LC(Z) &kp C_VOL_DN   &lang_swap  &kp DEL  &sel_word_lin  &jump_word_lin  &word_del_lin  &none
+            &kp HOME   &kp END   &kp LC(X)   &kp LC(Z)   &kp C_VOL_DN   &lang_swap   &kp DEL   &sel_word_lin   &jump_word_lin   &word_del_lin
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &trans         &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -497,13 +497,13 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │  7       │  5       │  3       │  1       │  9       │   │  8       │  0       │  2       │  4       │  6       │  none    │
-            &none      &kp N7    &kp N5     &kp N3     &kp N1      &kp N9         &kp N8     &kp N0     &kp N2     &kp N4     &kp N6    &none
+            &kp N7   &kp N5   &kp N3   &kp N1   &kp N9   &kp N8   &kp N0   &kp N2   &kp N4   &kp N6
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  ä       │  ,       │  .       │  -       │  F11     │   │  F10     │  BSPC    │  .       │  ,       │  ö       │  none    │
-            &none      &umlaut_a_lin &kp COMMA   &kp DOT  &kp MINUS   &kp F11        &kp F10    &kp BSPC   &kp DOT   &kp COMMA    &umlaut_o_lin &none
+            &umlaut_a_lin   &kp COMMA   &kp DOT   &kp MINUS   &kp F11   &kp F10   &kp BSPC   &kp DOT   &kp COMMA   &umlaut_o_lin
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
-            &none      &kp F7     &kp F5     &kp F1     &kp F1     &kp F9         &kp F8     &kp F12     &kp F2     &kp F4     &kp F6    &none
+            &kp F7   &kp F5   &kp F1   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &to 5           &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
