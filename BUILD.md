@@ -14,8 +14,9 @@ Build the Toucan2 firmware locally using `west`.
 - This repo initialized as a west workspace and dependencies fetched:
   ```bash
   cd toucan2-zmk/
-  # Only needed once:
-  # west init -l config
+  ## ONE-TIME: initialize this repo as the west manifest
+  west init -l config
+  ## Fetch ZMK, Zephyr, and all module sources (~5–10 min first time)
   west update
   ```
 
@@ -28,8 +29,14 @@ Always specify `-d build/…` and use `--pristine` when starting fresh (avoids s
 > ⚠️ Never run `west build` from inside a `build/` directory — that triggers the "source directory specified twice" error.
 
 ### Left half (nice!view + Studio + RGB LED)
+
+> ⚠️ If you see a `ZephyrConfig.cmake` not found error, your shell may still have an old `ZEPHYR_BASE` environment variable exported. Run `unset ZEPHYR_BASE` first, or prefix every `west` command with it:
+> ```bash
+> unset ZEPHYR_BASE && west build ...
+> ```
+
 ```bash
-west build -s zmk/app -b seeeduino_xiao_ble \
+unset ZEPHYR_BASE && west build -s zmk/app -b seeeduino_xiao_ble \
   -d build/left -S studio-rpc-usb-uart \
   --pristine \
   -- -DSHIELD="toucan_left rgbled_adapter nice_view_gem" \
