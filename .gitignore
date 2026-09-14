@@ -1,0 +1,25 @@
+# West / Zephyr workspace (fetched by `west update` — do not commit)
+/.west/
+/zephyr/
+/zmk/
+/zmk-helpers/
+/zmk-auto-layer/
+/zmk-adaptive-key/
+/zmk-tri-state/
+/zmk-rgbled-widget/
+/zmk_driver_azoteq/
+/zmk-input-zoom/
+/modules/
+
+# Build artifacts
+/build/
+/build-*/
+*.uf2
+*.bin
+*.hex
+*.elf
+
+# IDE / OS
+.DS_Store
+.vscode/
+.idea/
