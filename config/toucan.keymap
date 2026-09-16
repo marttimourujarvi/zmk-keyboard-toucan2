@@ -369,7 +369,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │ , <      │ . >      │ / ?      │  none    │
             &kp Z   &kp X   &kp C   &kp D   &kp V   &kp K   &kp H   &kp COMMA   &kp DOT   &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &kp A      &kp ENTER  &lt 1 SPACE     MAGIC_SHIFT &lt 2 BSPC  &kp A
+                                            &tog 1      &kp SPACE  &kp ENTER      MAGIC_SHIFT &kp BSPC    &tog 2
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -423,7 +423,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
             &kp F7   &kp F5   &kp F1   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &trans      &trans      &to 5           &trans      &trans     &trans
+                                            &trans      &trans      &to 5            &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -469,7 +469,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
             &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &kp A       &lt 7 SPACE &kp ENTER   MAGIC_SHIFT &lt 2 BSPC  &kp A
+                                            &tog 7       &kp SPACE   &kp ENTER   MAGIC_SHIFT &kp BSPC    &tog 2
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -505,7 +505,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
             &kp F7   &kp F5   &kp F1   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &trans      &trans      &to 5           &trans      &trans     &trans
+                                            &trans      &trans      &to 5            &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
