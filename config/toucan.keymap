@@ -71,7 +71,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         lt: layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
             bindings = <&mo>, <&kp>;
@@ -421,7 +421,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             &umlaut_a   &kp COMMA   &kp DOT   &kp MINUS   &kp F11   &kp F10   &kp BSPC   &kp DOT   &kp COMMA   &umlaut_o
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
-            &kp F7   &kp F5   &kp F1   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
+            &kp F7   &kp F5   &kp F3   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &trans      &trans      &to 5            &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
@@ -503,7 +503,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             &umlaut_a_lin   &kp COMMA   &kp DOT   &kp MINUS   &kp F11   &kp F10   &kp BSPC   &kp DOT   &kp COMMA   &umlaut_o_lin
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
-            &kp F7   &kp F5   &kp F1   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
+            &kp F7   &kp F5   &kp F3   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
                                             &mo 4       &trans      &to 5            MAGIC_SHIFT &trans      &mo 9
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
