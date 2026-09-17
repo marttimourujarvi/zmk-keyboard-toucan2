@@ -357,7 +357,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
     keymap {
         compatible = "zmk,keymap";
         default_layer {
-            display-name = "Default Layer";
+            display-name = "mac";
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  none    │  Q       │  W       │  F       │  P       │  B       │   │  J       │  L       │  U       │  Y       │  - / _   │  none    │
@@ -387,7 +387,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │ SPACE B  │ SPACE F  │  CUT     │  UNDO    │ VOL_DOWN │   │ lang_swap│  DEL     | SEL WORD | JUMP WORD| WORD DEL │  none    │
             &space_b   &space_f   &kp LG(X)   &kp LG(Z)   &kp C_VOL_DN   &lang_swap   &kp DEL   &sel_word   &jump_word   &word_del
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &trans      &trans      &trans         &trans      &trans     &trans
+                                            &trans      &trans      &trans         &trans      &lt 2 BSPC     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -405,7 +405,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │  <       │  |       │  -       │  >       │  /       │   │  \       │  #       │  +       │  ~       │  `       │  none    │
             &kp LT   &kp PIPE   &kp MINUS   &kp GT   &kp SLASH   &kp BSLH   &kp HASH   &kp PLUS   &kp TILDE   &kp GRAVE
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &trans      &trans      &trans         &trans      &trans     &trans
+                                            &trans      &lt 1 SPACE      &trans         &trans      &trans     &trans
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -457,7 +457,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         };
 
         lin_overlay {
-            display-name = "Linux Overlay";
+            display-name = "lnx";
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
@@ -487,7 +487,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │ HOME     │ END      │  CUT     │  UNDO    │ VOL_DOWN │   │ lang_swap│  DEL     | SEL WORD | JUMP WORD| WORD DEL │  none    │
             &kp HOME   &kp END   &kp LC(X)   &kp LC(Z)   &kp C_VOL_DN   &lang_swap   &kp DEL   &sel_word_lin   &jump_word_lin   &word_del_lin
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &mo 4       &trans      &kp ENTER       MAGIC_SHIFT &trans      &mo 9
+                                            &mo 4       &trans      &kp ENTER       MAGIC_SHIFT &lt 9 BSPC      &mo 9
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -505,7 +505,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │  F7      │  F5      │  F3      │ F1       │  F9      │   │  F8      │  F12     │  F2      │  F4      │  F6      │  none    │
             &kp F7   &kp F5   &kp F1   &kp F1   &kp F9   &kp F8   &kp F12   &kp F2   &kp F4   &kp F6
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &mo 4       &trans      &to 5            MAGIC_SHIFT &trans      &mo 9
+                                            &mo 4       &lt 7 SPACE      &to 5            MAGIC_SHIFT &lt 9 BSPC      &mo 9
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -523,7 +523,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │  <       │  |       │  -       │  >       │  /       │   │  \       │  #       │  +       │  ~       │  `       │  none    │
             &kp LT   &kp PIPE   &kp MINUS   &kp GT   &kp SLASH   &kp BSLH   &kp HASH   &kp PLUS   &kp TILDE   &kp GRAVE
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &mo 4       &trans      &kp ENTER       MAGIC_SHIFT &trans      &mo 9
+                                            &mo 4       &lt 7 SPACE      &kp ENTER       MAGIC_SHIFT &trans      &mo 9
         //                                 ╰──────────╴──────────╴──────────╯   ╰──────────╴──────────╴──────────╯
             >;
         };
