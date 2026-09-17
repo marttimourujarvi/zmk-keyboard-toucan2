@@ -523,7 +523,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │  <       │  |       │  -       │  >       │  /       │   │  \       │  #       │  +       │  ~       │  `       │  none    │
             &kp LT   &kp PIPE   &kp MINUS   &kp GT   &kp SLASH   &kp BSLH   &kp HASH   &kp PLUS   &kp TILDE   &kp GRAVE
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &mo 4       &lt 7 SPACE   &kp ENTER  MAGIC_SHIFT &trans      &mo 9
+                                            &mo 4       &trans   &kp ENTER  MAGIC_SHIFT &trans      &mo 9
         //                                 ╰──────────╴──────────╴──────────╯   ╰──────────╴──────────╴──────────╯
             >;
         };
