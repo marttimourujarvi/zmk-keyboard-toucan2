@@ -469,7 +469,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
             &kp Z   &kp X   &kp C   &kp D   &kp V   &kp K   &kp H   &kp COMMA   &kp DOT   &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                             &mo 4    &lt 7 SPACE  &kp ENTER    MAGIC_SHIFT  &lt 9 BSPC  &mo 9
+                                             &mo 4    &lt 7 SPACE  &kp ENTER    MAGIC_SHIFT  &lt 8 BSPC  &mo 9
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -487,8 +487,27 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
         //│  none    │ HOME     │ END      │  CUT     │  UNDO    │ VOL_DOWN │   │ lang_swap│  DEL     | SEL WORD | JUMP WORD| WORD DEL │  none    │
             &kp HOME   &kp END   &kp LC(X)   &kp LC(Z)   &kp C_VOL_DN   &lang_swap   &kp DEL   &sel_word_lin   &jump_word_lin   &word_del_lin
         //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &mo 4       &trans      &kp ENTER    MAGIC_SHIFT   &lt 9 BSPC  &mo 9
+                                            &mo 4       &trans      &kp ENTER    MAGIC_SHIFT  &lt 8 BSPC  &mo 9
         //                                 ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
+            >;
+        };
+
+        
+        sym_lin {
+            display-name = "Symbols Linux";
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  none    │  !       │  [       │  {       │  (       │  ?       │   │  @       │  )       │  }       │  ]       │  '       │  none    │
+           &kp EXCL   &kp LBKT   &kp LBRC   &kp LPAR   &kp QMARK   &kp AT_SIGN   &kp RPAR   &kp RBRC   &kp RBKT   &kp SQT
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  none    │  ^       │  =       │  _       │  $       │  *       │   │  %       │  :       │  ;       │  &       │  "       │  none    │
+           &kp CARET   &kp EQUAL   &kp UNDER   &kp DLLR   &kp ASTRK   &kp PRCNT   &kp COLON   &kp SEMI   &kp AMPS   &kp DQT
+        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  none    │  <       │  |       │  -       │  >       │  /       │   │  \       │  #       │  +       │  ~       │  `       │  none    │
+            &kp LT   &kp PIPE   &kp MINUS   &kp GT   &kp SLASH   &kp BSLH   &kp HASH   &kp PLUS   &kp TILDE   &kp GRAVE
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
+                                            &mo 4       &lt 7 SPACE &kp ENTER    MAGIC_SHIFT &trans      &mo 9
+        //                                 ╰──────────╴──────────╴──────────╯   ╰──────────╴──────────╴──────────╯
             >;
         };
 
@@ -510,23 +529,6 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             >;
         };
 
-        sym_lin {
-            display-name = "Symbols Linux";
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  none    │  !       │  [       │  {       │  (       │  ?       │   │  @       │  )       │  }       │  ]       │  '       │  none    │
-           &kp EXCL   &kp LBKT   &kp LBRC   &kp LPAR   &kp QMARK   &kp AT_SIGN   &kp RPAR   &kp RBRC   &kp RBKT   &kp SQT
-        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  none    │  ^       │  =       │  _       │  $       │  *       │   │  %       │  :       │  ;       │  &       │  "       │  none    │
-           &kp CARET   &kp EQUAL   &kp UNDER   &kp DLLR   &kp ASTRK   &kp PRCNT   &kp COLON   &kp SEMI   &kp AMPS   &kp DQT
-        //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  none    │  <       │  |       │  -       │  >       │  /       │   │  \       │  #       │  +       │  ~       │  `       │  none    │
-            &kp LT   &kp PIPE   &kp MINUS   &kp GT   &kp SLASH   &kp BSLH   &kp HASH   &kp PLUS   &kp TILDE   &kp GRAVE
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────┴──────────╯
-                                            &mo 4       &trans   &kp ENTER  MAGIC_SHIFT &trans      &mo 9
-        //                                 ╰──────────╴──────────╴──────────╯   ╰──────────╴──────────╴──────────╯
-            >;
-        };
 
         extra_3 {
                 status = "reserved";
