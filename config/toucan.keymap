@@ -19,11 +19,17 @@
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
                tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
-               require-prior-idle-ms = <150>; hold-trigger-on-release;         \
+               require-prior-idle-ms = <80>; hold-trigger-on-release;         \
                hold-trigger-key-positions = <TRIGGER_POS>;)
 
 MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs.
 MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
+#define MAKE_HRM_NO_RELEASE(NAME, HOLD, TAP, TRIGGER_POS)                                 \
+  ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
+               tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
+               require-prior-idle-ms = <80>;                                  \
+               hold-trigger-key-positions = <TRIGGER_POS>;)
+MAKE_HRM_NO_RELEASE(hml2, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs without hold-trigger-on-release
 
 #define MAGIC_SHIFT &magic_shift LSHFT 0
 
@@ -324,10 +330,11 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             #binding-cells = <0>;
             bindings
                 = <&macro_press &kp RALT>
-                , <&macro_tap &kp DQT>
                 , <&macro_release &kp RALT>
+                , <&macro_tap &kp DQT>
                 , <&macro_tap &kp A>
                 ;
+            // Requires Right Alt configured as Compose key on Linux.
         };
 
         umlaut_o_lin: umlaut_o_lin {
@@ -335,10 +342,11 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             #binding-cells = <0>;
             bindings
                 = <&macro_press &kp RALT>
-                , <&macro_tap &kp DQT>
                 , <&macro_release &kp RALT>
+                , <&macro_tap &kp DQT>
                 , <&macro_tap &kp O>
                 ;
+            // Requires Right Alt configured as Compose key on Linux.
         };
 
     };
@@ -365,7 +373,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             &kp Q   &kp W   &kp F   &kp P   &kp B   &kp J   &kp L   &kp U   &kp Y   &m_u
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │   O      │  none    │
-        &hml LSHFT A   &hml LCTRL R   &hml LALT S   &hml LGUI T   &kp G   &kp M   &hmr RGUI N   &hmr RALT E   &hmr RCTRL I   &hmr RSHFT O
+        &hml2 LSHFT A   &hml2 LCTRL R   &hml2 LALT S   &hml2 LGUI T   &kp G   &kp M   &hmr RGUI N   &hmr RALT E   &hmr RCTRL I   &hmr RSHFT O
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  none    │  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │ , <      │ . >      │ / ?      │  none    │
             &kp Z   &kp X   &kp C   &kp D   &kp V   &kp K   &kp H   &kp COMMA   &kp DOT   &kp FSLH
@@ -465,7 +473,7 @@ ZMK_TRI_STATE(swapper_lin, bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             &kp Q   &kp W   &kp F   &kp P   &kp B   &kp J   &kp L   &kp U   &kp Y   &m_u
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
-        &hml LSHFT A   &hml LCTRL R   &hml LALT S   &hml LGUI T   &kp G   &kp M   &hmr RGUI N   &hmr RALT E   &hmr RCTRL I   &hmr RSHFT O
+        &hml2 LSHFT A   &hml2 LCTRL R   &hml2 LALT S   &hml2 LGUI T   &kp G   &kp M   &hmr RGUI N   &hmr RALT E   &hmr RCTRL I   &hmr RSHFT O
         //├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │          │   │          │          │          │          │          │          │
             &kp Z   &kp X   &kp C   &kp D   &kp V   &kp K   &kp H   &kp COMMA   &kp DOT   &kp FSLH
